@@ -1,7 +1,7 @@
-getInputData = require('./utils/getInputData');
-inputToNums = require('./utils/inputToNums');
+getInputData = require('../utils/getInputData');
+inputToNums = require('../utils/inputToNums');
 
-getInputData.fromFile('../inputData/day1.txt')
+getInputData.fromFile('../../inputData/day1.txt')
   .then(input => {
     const changes = inputToNums(input);
     const answer = changes.reduce((acc, curr) => acc + curr, 0);

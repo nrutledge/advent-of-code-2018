@@ -1,7 +1,7 @@
-getInputData = require('./utils/getInputData');
-inputToStrings = require('./utils/inputToStrings');
+getInputData = require('../utils/getInputData');
+inputToStrings = require('../utils/inputToStrings');
 
-getInputData.fromFile('../inputData/day2.txt')
+getInputData.fromFile('../../inputData/day2.txt')
   .then(input => {
     const ids = inputToStrings(input);
     const lettersCounts = countLetters(ids);
