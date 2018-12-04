@@ -27,8 +27,8 @@ function parseClaim(claim) {
     id: parts[0],
     left,
     top,
-    right: left + width, 
-    bottom: top + height
+    right: left + width - 1, 
+    bottom: top + height - 1
   };
 }
 
@@ -36,9 +36,9 @@ function fillGrid(claims) {
   const grid = [];
 
   claims.forEach(claim => {
-    for (let row = claim.top; row < claim.bottom; row++) {
+    for (let row = claim.top; row <= claim.bottom; row++) {
       if (!grid[row]) { grid[row] = []; }
-      for (let col = claim.left; col < claim.right; col++) {
+      for (let col = claim.left; col <= claim.right; col++) {
         const currCellVal = grid[row][col] || 0;
 
         grid[row][col] = currCellVal + 1;

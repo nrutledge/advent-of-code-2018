@@ -26,8 +26,8 @@ getInputData.fromFile('../../inputData/day3.txt')
       id: parts[0],
       left,
       top,
-      right: left + width, 
-      bottom: top + height
+      right: left + width - 1, 
+      bottom: top + height - 1
     };
   }
 
@@ -37,9 +37,9 @@ function fillGrid (claims) {
   claims.forEach(claim => {
     const coords = parseClaim(claim);
 
-    for (let row = coords.top; row < coords.bottom; row++) {
+    for (let row = coords.top; row <= coords.bottom; row++) {
       if (!grid[row]) { grid[row] = []; }
-      for (let col = coords.left; col < coords.right; col++) {
+      for (let col = coords.left; col <= coords.right; col++) {
         const currCellVal = grid[row][col] || 0;
 
         grid[row][col] = currCellVal + 1;
