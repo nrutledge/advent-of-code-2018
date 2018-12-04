@@ -1,5 +1,5 @@
-getInputData = require('../utils/getInputData');
-inputToNums = require('../utils/inputToNums');
+const getInputData = require('../utils/getInputData');
+const inputToNums = require('../utils/inputToNums');
 
 getInputData.fromFile('../../inputData/day1.txt')
   .then(input => {

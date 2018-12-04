@@ -1,9 +1,9 @@
-getInputData = require('../utils/getInputData');
-inputToStrings = require('../utils/inputToStrings');
+const getInputData = require('../utils/getInputData');
+const inputToStrings = require('../utils/inputToStrings');
 
 getInputData.fromFile('../../inputData/day3.txt')
-  .then(input => inputToStrings(input))
-  .then(claims => {
+  .then(input => {
+    const claims = inputToStrings(input);
     const parsedClaims = claims.map(claim => parseClaim(claim));
     const grid = fillGrid(parsedClaims);
     const answer = findNonOverlappingId(parsedClaims, grid);
