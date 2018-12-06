@@ -1,8 +1,8 @@
-const getInputData = require('../utils/getInputData');
-const inputToStrings = require('../utils/inputToStrings');
+const getInputData = require('./utils/getInputData');
+const inputToStrings = require('./utils/inputToStrings');
 
 // Solves the challenge at: https://adventofcode.com/2018/day/4
-getInputData.fromFile('../../inputData/day4.txt')
+getInputData.fromFile('../inputData/day4.txt')
   .then(input => {
     const logEntries = inputToStrings(input).sort();
     const parsedEntries = logEntries.map(entry => parseEntry(entry));

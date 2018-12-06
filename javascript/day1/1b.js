@@ -1,6 +1,7 @@
 const getInputData = require('../utils/getInputData');
 const inputToNums = require('../utils/inputToNums');
 
+// Solves the second challenge at: https://adventofcode.com/2018/day/1
 getInputData.fromFile('../../inputData/day1.txt')
   .then(input => {
     changes = inputToNums(input);

@@ -1,6 +1,7 @@
 const getInputData = require('../utils/getInputData');
 const inputToStrings = require('../utils/inputToStrings');
 
+// Solves the first challenge at: https://adventofcode.com/2018/day/3
 getInputData.fromFile('../../inputData/day3.txt')
   .then(input => {
     const claims = inputToStrings(input);
