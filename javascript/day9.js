@@ -16,7 +16,7 @@ function Marble(val, prev, next) {
 }
 
 function solve(playerCount, lastMarblePts) {
-  const scores = Array.from({ length: playerCount }).fill(0);
+  const scores = new Array(playerCount).fill(0);
   let currMarble = new Marble(0);
 
   for (i = 1; i <= lastMarblePts; i++) {

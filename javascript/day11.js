@@ -1,8 +1,6 @@
 // Solves the challenge at: https://adventofcode.com/2018/day/11
-
 const sn = 8199;
-
-const emptyGrid = Array.from({ length: 300 }).map(_ => Array.from({ length: 300 }));
+const emptyGrid = Array.from({ length: 300 }, _ => Array.from({ length: 300 }));
 
 const grid = emptyGrid.map((row, rowIndex) => row.map((_, colIndex) => {
   return calcPowerLevel(colIndex + 1, rowIndex + 1);
@@ -34,18 +32,18 @@ function calcSquare(leftIndex, topIndex, squareSize, grid) {
 }
 
 function solvePart1(grid, squareSize) {
-  return grid.reduce((acc, row, rIndex) => {
-    const colLargest = row.reduce((acc, cell, cIndex) => {
-      const sum = calcSquare(cIndex, rIndex, squareSize, grid);
-      if (sum > acc.val) {
-        return { val: sum, x: cIndex + 1, y: rIndex + 1 };
-      } else {
-        return acc;
-      }
-    }, { val: 0 });
+  let largest = { val: 0 };
 
-    return colLargest.val > acc.val ? colLargest : acc;
-  }, { val: 0 });
+  for (let r = 0; r <= grid.length - squareSize; r++) {
+    for (let c = 0; c <= grid[0].length - squareSize; c++) {
+      const sum = calcSquare(c, r, squareSize, grid)
+      if (sum > largest.val) { 
+        largest = { val: sum, x: c + 1, y: r + 1 }
+      }
+    }
+  }
+
+  return largest;
 }
 
 function solvePart2(grid) {
