@@ -7,7 +7,6 @@ const grid = emptyGrid.map((row, rowIndex) => row.map((_, colIndex) => {
 }))
 
 function calcPowerLevel(x, y) {
-  debugger;
   const rackId = x + 10;
   let power = rackId * y;
   power += sn;
