@@ -1,4 +1,3 @@
-require('pretty-error').start();
 const getInputData = require('./utils/getInputData');
 
 // Solves the challenge at: https://adventofcode.com/2018/day/8
@@ -11,8 +10,7 @@ getInputData.fromFile('../inputData/day8.txt')
   })
   .catch(err => console.log(err));
 
-// Global index to keep track of current position in input through
-// recursive calls
+// Index to keep track of current position in input through recursive calls
 let i = 0;
 
 function nextNum(nums) {
@@ -23,7 +21,6 @@ function nextNum(nums) {
 function buildTree(nums) {
   const cQty = nextNum(nums);
   const mQty = nextNum(nums);
-
   const children = Array.from({ length: cQty }).map(_ => buildTree(nums));
   const metadata = Array.from({ length: mQty }).map(_ => nextNum(nums));
 
