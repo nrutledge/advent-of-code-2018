@@ -8,11 +8,7 @@ const grid = emptyGrid.map((row, rowIndex) => row.map((_, colIndex) => {
 
 function calcPowerLevel(x, y) {
   const rackId = x + 10;
-  let power = rackId * y;
-  power += sn;
-  power = power * rackId;
-  power = parseInt(power.toString().slice(-3,-2));
-  return power - 5;
+  return parseInt(((rackId * y + sn) * rackId).toString().slice(-3,-2)) - 5;
 }
 
 function calcSquare(leftIndex, topIndex, squareSize, grid) {
@@ -26,7 +22,6 @@ function calcSquare(leftIndex, topIndex, squareSize, grid) {
       sum += grid[i][j];
     }
   }
-
   return sum;
 }
 
@@ -41,14 +36,15 @@ function solvePart1(grid, squareSize) {
       }
     }
   }
-
   return largest;
 }
 
 function solvePart2(grid) {
   let largest = { val: 0 }
+
   for (let i = 1; i <= grid.length; i++) {
     const res = solvePart1(grid, i);
+
     if (res.val > largest.val) {
       largest = { val: res.val, x: res.x, y: res.y, size: i };
     }
