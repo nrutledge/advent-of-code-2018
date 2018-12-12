@@ -21,21 +21,21 @@ function parseNotes(notes) {
   })
 }
 
-function generate(potsStr, notes, p0Index) {
-  if (potsStr.slice(0,4).match(/#+/)) { 
-    potsStr = '....' + potsStr; 
+function generate(potsState, notes, p0Index) {
+  if (potsState.slice(0,4).match(/#+/)) { 
+    potsState = '....' + potsState; 
     p0Index += 4;
   } 
-  if (potsStr.slice(-4).match(/#+/)) {
-    potsStr = potsStr + '....';
+  if (potsState.slice(-4).match(/#+/)) {
+    potsState = potsState + '....';
   } 
 
   let newPots = '';
 
-  for (let i = 0; i < potsStr.length; i++) {
+  for (let i = 0; i < potsState.length; i++) {
     newPots += notes.reduce((a,note) => {
       let pattern = note.pattern;
-      const section = potsStr.slice(i-2,i+3);
+      const section = potsState.slice(i-2,i+3);
 
       if (section === pattern) {
         return note.result;
@@ -43,24 +43,22 @@ function generate(potsStr, notes, p0Index) {
       return a;
     }, '.');
   }
-
   return { state: newPots, p0Index }
 }
 
-function solvePart1(potsStr, notes, rounds) {
-  let pots = { state: potsStr, p0Index: 0 };
+function solvePart1(potsState, notes, rounds) {
+  let pots = { state: potsState, p0Index: 0 };
 
   for (let i = 1; i <= rounds; i++) {
    pots = generate(pots.state, notes, pots.p0Index);
   }
-
   return pots.state.split('').reduce((a,c,i) => {
     return c === '#' ? a + i - pots.p0Index : a
   }, 0);
 }
 
-function solvePart2(potsStr, notes, rounds) {
-  let pots = { state: potsStr, p0Index: 0 };
+function solvePart2(potsState, notes, rounds) {
+  let pots = { state: potsState, p0Index: 0 };
   let diff = 0;
   let sum = 0;
 
