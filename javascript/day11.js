@@ -12,9 +12,6 @@ function calcPowerLevel(x, y) {
 }
 
 function calcSquare(leftIndex, topIndex, squareSize, grid) {
-  if (topIndex + squareSize > grid.length) { return 0 }
-  if (leftIndex + squareSize > grid[0].length) { return 0 }
-  
   let sum = 0;
 
   for (let i = topIndex; i < topIndex + squareSize; i++ ) {
