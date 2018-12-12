@@ -7,8 +7,8 @@ getInputData.fromFile('../inputData/day12.txt')
     const lines = inputToStrings(input);
     const initialState = lines[0].slice(15);
     const notes = parseNotes(lines.slice(1));
-    console.log('Answer1', solvePart1(initialState, notes, 20));
-    console.log('Answer2', solvePart2(initialState, notes, 50000000000));
+    console.log('Answer1', solve(initialState, notes, 20));
+    console.log('Answer2', solve(initialState, notes, 50000000000));
   })
   .catch(err => console.log(err));
 
@@ -46,18 +46,7 @@ function generate(potsState, notes, p0Index) {
   return { state: newPots, p0Index }
 }
 
-function solvePart1(potsState, notes, rounds) {
-  let pots = { state: potsState, p0Index: 0 };
-
-  for (let i = 1; i <= rounds; i++) {
-   pots = generate(pots.state, notes, pots.p0Index);
-  }
-  return pots.state.split('').reduce((a,c,i) => {
-    return c === '#' ? a + i - pots.p0Index : a
-  }, 0);
-}
-
-function solvePart2(potsState, notes, rounds) {
+function solve(potsState, notes, rounds) {
   let pots = { state: potsState, p0Index: 0 };
   let diff = 0;
   let sum = 0;
