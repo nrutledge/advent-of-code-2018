@@ -1,10 +1,10 @@
 // Solves the challenge at: https://adventofcode.com/2018/day/11
 const sn = 8199;
-const emptyGrid = Array.from({ length: 300 }, _ => Array.from({ length: 300 }));
-
-const grid = emptyGrid.map((row, rowIndex) => row.map((_, colIndex) => {
-  return calcPowerLevel(colIndex + 1, rowIndex + 1);
-}))
+const grid = Array.from({ length: 300 }, (_,y) => {
+  return Array.from({ length: 300 }, (_,x) => {
+    return calcPowerLevel(x + 1, y + 1);
+  });
+});
 
 function calcPowerLevel(x, y) {
   const rackId = x + 10;
